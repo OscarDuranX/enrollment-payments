@@ -1,0 +1,21 @@
+{
+    "name": "acachascool/enrollment_payments",
+    "description": "Modul que s'encarregara de la venda de matriculacions",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oscar Duran",
+            "email": "xoscarduranx@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CreditSintesi\\enrollment_payments\\": "src"
+        }
+    },
+    "require": {
+        "laravel/framework": "^5.3",
+        "fzaninotto/faker": "^1.6"
+    }
+}
