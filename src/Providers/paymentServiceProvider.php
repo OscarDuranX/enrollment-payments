@@ -6,7 +6,7 @@
  * Time: 20:59
  */
 
-namespace CreditSintesi\enrollment_payments\Providers;
+namespace scool\enrollment_payments\Providers;
 
 
 use Illuminate\Support\ServiceProvider;

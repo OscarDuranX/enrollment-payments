@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "CreditSintesi\\enrollment_payments\\": "src"
+            "scool\\enrollment_payments\\": "src"
         }
     },
     "require": {

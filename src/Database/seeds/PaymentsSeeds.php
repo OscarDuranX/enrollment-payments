@@ -6,7 +6,7 @@
  * Time: 20:48
  */
 
-namespace CreditSintesi\enrollment_payments\Database\Seeds;
+namespace scool\enrollment_payments\Database\Seeds;
 
 
 class PaymentsSeeds

@@ -1,5 +1,5 @@
 <?php
-namespace CreditSintesi\enrollment_payments;
+namespace scool\enrollment_payments;
 
 use Illuminate\Database\Eloquent\Model;
 
