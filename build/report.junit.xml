@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites/>
+<testsuites>
+  <testsuite name="Scool Test Suite" tests="1" assertions="0" failures="0" errors="0" time="0.001223">
+    <testsuite name="MisTestosTest" file="/home/oscar/Code/scool/enrollment_payments/tests/MisTestosTest.php" tests="1" assertions="0" failures="0" errors="0" time="0.001223">
+      <testcase name="Warning" assertions="0" time="0.001223"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
