@@ -15,19 +15,22 @@ class paymentServiceProvider extends ServiceProvider
 {
     public function register()
     {
-
+        if(!defined('SCOOL_PAYMENT_PATH')){
+            define('SCOOL_PAYMENT_PATH', realpath(__DIR__.'/../../'));
+        }
     }
 
     public function boot()
     {
         $this->loadMigrations();
         $this->publishFactories();
+        $this->publishTests();
 
     }
 
     private function loadMigrations()
     {
-        $this->loadMigrationsFrom(__DIR__.'../../database/migrations');
+        $this->loadMigrationsFrom(SCOOL_PAYMENT_PATH.'/database/migrations');
     }
 
     private function publishFactories()
@@ -38,6 +41,14 @@ class paymentServiceProvider extends ServiceProvider
                     database_path() . '/factories/PaymentFactory'
             ],"CreditSintesi_enrollment_payments"
         );
+    }
+
+    public function publishTests()
+    {
+        $this->publishes([
+           [SCOOL_PAYMENT_PATH.'/tests/MisTestosTest.php' , 'tests/MisTestosTest.php'] .
+           'scool_payment'
+        ]);
     }
 
 }

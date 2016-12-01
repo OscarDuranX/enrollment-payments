@@ -1,4 +1,4 @@
-# :package_name
+# Enrollment Payments
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -14,11 +14,29 @@ PSRs you support to avoid any confusion with users and contributors.
 
 ## Install
 
-Via Composer
+In a Laravel project Execute:
 
 ``` bash
 $ composer require :vendor/:package_name
 ```
+
+Add to file **config/app.php** the PaymentServiceProvider:
+
+``` php
+´´´
+/*
+* Package Service Providers...
+*/
+ Scool\Pauments\Providers\PaymentServiceProvider::class,
+´´´
+```
+
+And publish files with:
+
+``` bash
+php artisan vendor:publish --tag=scool_payment
+```
+
 
 ## Usage
 
