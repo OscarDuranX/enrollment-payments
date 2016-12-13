@@ -39,7 +39,7 @@ class paymentServiceProvider extends ServiceProvider
             [
                 __DIR__.'/../../database/factories/PaymentFactory.php' =>
                     database_path() . '/factories/PaymentFactory'
-            ],"CreditSintesi_enrollment_payments"
+            ],"enrollment_payments"
         );
     }
 

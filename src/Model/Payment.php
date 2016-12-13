@@ -6,7 +6,7 @@
  * Time: 21:23
  */
 
-namespace App;
+namespace scool\enrollment_payments\Model;
 
 
 use Illuminate\Database\Eloquent\Model;
