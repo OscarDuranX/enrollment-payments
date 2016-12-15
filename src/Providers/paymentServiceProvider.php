@@ -9,7 +9,9 @@
 namespace scool\enrollment_payments\Providers;
 
 
+use Acacha\Names\Providers\NamesServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use scool\enrollment_payments;
 
 class paymentServiceProvider extends ServiceProvider
 {
@@ -22,10 +24,31 @@ class paymentServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        $this->defineRoutes();
         $this->loadMigrations();
+        $this->publishConfig();
         $this->publishFactories();
         $this->publishTests();
+        $this->registerNamesServiceProvider();
+    }
 
+    protected function defineRoutes()
+    {
+        if (!$this->app->routesAreCached()) {
+            $router = app('router');
+            $router->group(['namespace' => 'scool\enrollment_payments\Http\Controllers'], function () {
+                require __DIR__.'/../Http/routes.php';
+            });
+        }
+    }
+
+    private function publishConfig() {
+        $this->publishes(
+            ScoolCurriculum::configs(),"scool_curriculum"
+        );
+        $this->mergeConfigFrom(
+            SCOOL_PAYMENT_PATH . '/config/curriculum.php', 'scool_curriculum'
+        );
     }
 
     private function loadMigrations()
@@ -49,6 +72,11 @@ class paymentServiceProvider extends ServiceProvider
            [SCOOL_PAYMENT_PATH.'/tests/MisTestosTest.php' , 'tests/MisTestosTest.php'] .
            'scool_payment'
         ]);
+    }
+
+    public function registerNamesServiceProvider()
+    {
+        $this->app->register(NamesServiceProvider::class);
     }
 
 }
