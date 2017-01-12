@@ -20,6 +20,10 @@ class paymentServiceProvider extends ServiceProvider
         if(!defined('SCOOL_PAYMENT_PATH')){
             define('SCOOL_PAYMENT_PATH', realpath(__DIR__.'/../../'));
         }
+
+        $this->bindRepositories();
+
+
     }
 
     public function boot()
@@ -30,6 +34,17 @@ class paymentServiceProvider extends ServiceProvider
         $this->publishFactories();
         $this->publishTests();
         $this->registerNamesServiceProvider();
+    }
+
+    /**
+     * Bind repositories
+     */
+    protected function bindRepositories()
+    {
+        $this->app->bind(
+            \scool\enrollment_payments\Repositories\StudyRepository::class,
+            \scool\enrollment_payments\Repositories\StudyRepositoryEloquent::class);
+        //:end-bindings:
     }
 
     protected function defineRoutes()
