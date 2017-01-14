@@ -13,6 +13,7 @@ class StudyUpdateRequest extends FormRequest
      */
     public function authorize()
     {
+
         return false;
     }
 
