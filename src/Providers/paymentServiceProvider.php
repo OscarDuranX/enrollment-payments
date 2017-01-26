@@ -45,6 +45,8 @@ class paymentServiceProvider extends ServiceProvider
             \scool\enrollment_payments\Repositories\StudyRepository::class,
             \scool\enrollment_payments\Repositories\StudyRepositoryEloquent::class);
         $this->app->bind(\scool\enrollment_payments\Repositories\ProvaRepository::class, \scool\enrollment_payments\Repositories\ProvaRepositoryEloquent::class);
+        $this->app->bind(\scool\enrollment_payments\Repositories\DiscountsRepository::class, \scool\enrollment_payments\Repositories\DiscountsRepositoryEloquent::class);
+        $this->app->bind(\scool\enrollment_payments\Repositories\PaymentitemRepository::class, \scool\enrollment_payments\Repositories\PaymentitemRepositoryEloquent::class);
         //:end-bindings:
     }
 

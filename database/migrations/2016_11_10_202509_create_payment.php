@@ -13,7 +13,14 @@ class Payment extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('payment', function (Blueprint $table) {
+            $table->increments('payable_id');
+            $table->string('payable_type');
+            $table->integer('user_id')->unsigned();
+            $table->integer('cantidad');
+            $table->timestamps();
+//            $table->userstamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class Payment extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('payment');
     }
 }
