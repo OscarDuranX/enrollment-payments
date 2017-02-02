@@ -10,6 +10,13 @@ class Paymentitem extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'paymentitems_id','name','unitats','preu'
+    ];
+
+    public function Payment()
+    {
+        return $this->belongsTo('App\Payment');
+    }
 
 }

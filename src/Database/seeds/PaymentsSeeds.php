@@ -14,11 +14,11 @@ class PaymentsSeeds
 
     public function run()
     {
-        $this->seedStudies();
+        $this->seedPayments();
         $this->seedCourses();
     }
 
-    private function seedStudies()
+    private function seedPayments()
     {
 
     }

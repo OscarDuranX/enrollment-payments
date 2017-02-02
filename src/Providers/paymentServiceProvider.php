@@ -12,6 +12,7 @@ namespace scool\enrollment_payments\Providers;
 use Acacha\Names\Providers\NamesServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use scool\enrollment_payments;
+use scool\enrollment_payments\ScoolPayment;
 
 class paymentServiceProvider extends ServiceProvider
 {
@@ -22,8 +23,6 @@ class paymentServiceProvider extends ServiceProvider
         }
 
         $this->bindRepositories();
-
-
     }
 
     public function boot()
@@ -34,6 +33,7 @@ class paymentServiceProvider extends ServiceProvider
         $this->publishFactories();
         $this->publishTests();
         $this->registerNamesServiceProvider();
+        $this->publishViews();
     }
 
     /**
@@ -44,7 +44,6 @@ class paymentServiceProvider extends ServiceProvider
         $this->app->bind(
             \scool\enrollment_payments\Repositories\StudyRepository::class,
             \scool\enrollment_payments\Repositories\StudyRepositoryEloquent::class);
-        $this->app->bind(\scool\enrollment_payments\Repositories\ProvaRepository::class, \scool\enrollment_payments\Repositories\ProvaRepositoryEloquent::class);
         $this->app->bind(\scool\enrollment_payments\Repositories\DiscountsRepository::class, \scool\enrollment_payments\Repositories\DiscountsRepositoryEloquent::class);
         $this->app->bind(\scool\enrollment_payments\Repositories\PaymentitemRepository::class, \scool\enrollment_payments\Repositories\PaymentitemRepositoryEloquent::class);
         //:end-bindings:
@@ -62,10 +61,10 @@ class paymentServiceProvider extends ServiceProvider
 
     private function publishConfig() {
         $this->publishes(
-            ScoolCurriculum::configs(),"scool_curriculum"
+            ScoolPayment::configs(),"scool/enrollment_payments"
         );
         $this->mergeConfigFrom(
-            SCOOL_PAYMENT_PATH . '/config/curriculum.php', 'scool_curriculum'
+            SCOOL_PAYMENT_PATH . '/config/enrollment_payments.php', 'enrollment_payments'
         );
     }
 
@@ -77,10 +76,7 @@ class paymentServiceProvider extends ServiceProvider
     private function publishFactories()
     {
         $this->publishes(
-            [
-                __DIR__.'/../../database/factories/PaymentFactory.php' =>
-                    database_path() . '/factories/PaymentFactory'
-            ],"enrollment_payments"
+            ScoolPayment::factories(),"scool/enrollment_payments"
         );
     }
 
@@ -95,6 +91,10 @@ class paymentServiceProvider extends ServiceProvider
     public function registerNamesServiceProvider()
     {
         $this->app->register(NamesServiceProvider::class);
+    }
+
+    private function publishViews()
+    {
     }
 
 }

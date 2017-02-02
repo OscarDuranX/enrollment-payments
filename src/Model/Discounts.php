@@ -10,6 +10,10 @@ class Discounts extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'discount_id', 'discountable_type', 'discount'
+    ];
+
+
 
 }

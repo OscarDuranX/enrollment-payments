@@ -14,8 +14,7 @@ class CreatePaymentitemsTable extends Migration
 	public function up()
 	{
 		Schema::create('paymentitems', function(Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+            $table->increments('paymentitems_id')->unsigned();
             $table->integer('unitats');
             $table->integer('preu');
             $table->timestamps();

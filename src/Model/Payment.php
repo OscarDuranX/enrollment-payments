@@ -16,4 +16,13 @@ class Payment extends Model
 {
     use Nameable;
 
+    protected $fillable = [
+        'payable_id', 'payable_type', 'user_id', 'cantidad',
+    ];
+
+    public function Paymentitem()
+    {
+        return $this->hasMany('App\Paymentitem', 'foreign_key');
+    }
+
 }
