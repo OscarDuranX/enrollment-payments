@@ -11,10 +11,9 @@ namespace scool\enrollment_payments\Providers;
 
 use Acacha\Names\Providers\NamesServiceProvider;
 use Illuminate\Support\ServiceProvider;
-use scool\enrollment_payments;
 use scool\enrollment_payments\ScoolPayment;
 
-class paymentServiceProvider extends ServiceProvider
+class PaymentServiceProvider extends ServiceProvider
 {
     public function register()
     {
@@ -29,9 +28,9 @@ class paymentServiceProvider extends ServiceProvider
     {
         $this->defineRoutes();
         $this->loadMigrations();
-        $this->publishConfig();
+        //$this->publishConfig(); TODO Arreglar providercondig
         $this->publishFactories();
-        $this->publishTests();
+        //$this->publishTests(); TODO Arreglar providertests
         $this->registerNamesServiceProvider();
         $this->publishViews();
     }
@@ -64,7 +63,7 @@ class paymentServiceProvider extends ServiceProvider
             ScoolPayment::configs(),"scool/enrollment_payments"
         );
         $this->mergeConfigFrom(
-            SCOOL_PAYMENT_PATH . '/config/enrollment_payments.php', 'enrollment_payments'
+            SCOOL_PAYMENT_PATH . '/config/enrollmentpayments.php', 'enrollment_payments'
         );
     }
 
